@@ -65,7 +65,9 @@ memory-bank sync
 /config-editor
 
 # Update to latest version
-claude plugin update claude-config-editor
+/plugin marketplace remove claude-config-editor
+/plugin marketplace add https://github.com/jung-wan-kim/claude-config-editor
+/plugin install claude-config-editor
 ```
 
 ### Option 2: Manual Installation

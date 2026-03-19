@@ -65,7 +65,9 @@ memory-bank sync
 /config-editor
 
 # 최신 버전으로 업데이트
-claude plugin update claude-config-editor
+/plugin marketplace remove claude-config-editor
+/plugin marketplace add https://github.com/jung-wan-kim/claude-config-editor
+/plugin install claude-config-editor
 ```
 
 ### 방법 2: 수동 설치

@@ -1,0 +1,13 @@
+{
+  "name": "claude-config-editor-marketplace",
+  "plugins": [
+    {
+      "name": "claude-config-editor",
+      "source": ".",
+      "description": "Visual Config Editor for Claude Code - Drag & Drop Hook Pipeline, Agent Workflow, Skill/Rule Editor",
+      "version": "1.0.0",
+      "keywords": ["config", "editor", "hooks", "agents", "skills", "settings", "gui"],
+      "category": "productivity"
+    }
+  ]
+}

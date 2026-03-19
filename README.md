@@ -1,89 +1,91 @@
 # Claude Config Editor
 
-Claude Code의 설정 파일(`~/.claude/`)을 시각적으로 편집하는 웹 GUI 도구입니다.
-Hooks, Agents, Skills, Rules, Settings를 직관적인 인터페이스로 관리할 수 있습니다.
+A visual web GUI tool for editing Claude Code configuration files (`~/.claude/`).
+Manage Hooks, Agents, Skills, Rules, and Settings through an intuitive interface.
+
+[한국어](./README-kr.md)
 
 ![Claude Config Editor Demo](./config-editor.gif)
 
-## 주요 기능
+## Features
 
-- **Hooks 파이프라인 편집기** — 드래그 앤 드롭으로 Hook 카드 배열, 8가지 Hook 타입 지원
-- **Agents 관리** — 에이전트 분류(Orchestrator/Specialist/Utility), 워크플로우 다이어그램
-- **Skills 관리** — 스킬 파일 그룹화 및 마크다운 편집
-- **Rules 관리** — 규칙 파일 편집
-- **Settings 관리** — settings.json 수정 및 환경변수 관리
-- **이원 스코프** — User(`~/.claude/`) / Project(`{path}/.claude/`) 전환
+- **Hooks Pipeline Editor** — Drag & drop hook cards, supports 8 hook types
+- **Agents Management** — Agent categorization (Orchestrator/Specialist/Utility), workflow diagrams
+- **Skills Management** — Skill file grouping with markdown editing
+- **Rules Management** — Rule file editing
+- **Settings Management** — Edit settings.json and manage environment variables
+- **Dual Scope** — Switch between User (`~/.claude/`) and Project (`{path}/.claude/`)
 
-## 사전 요구사항
+## Prerequisites
 
-### memory-bank 플러그인 (필수)
+### memory-bank Plugin (Required)
 
-프로젝트 목록 조회를 위해 **memory-bank 플러그인**이 반드시 설치되어 있어야 합니다.
-Config Editor는 memory-bank의 SQLite DB(`~/.config/superpowers/conversation-index/db.sqlite`)에서 프로젝트 메타데이터를 읽어옵니다.
+The **memory-bank plugin** must be installed to retrieve the project list.
+Config Editor reads project metadata from memory-bank's SQLite DB (`~/.config/superpowers/conversation-index/db.sqlite`).
 
-memory-bank가 설치되지 않은 경우 Project 스코프 전환 시 프로젝트 목록을 불러올 수 없습니다.
+Without memory-bank, the project list cannot be loaded when switching to Project scope.
 
 ```bash
-# memory-bank 플러그인 설치
+# Install memory-bank plugin
 claude plugin add memory-bank
 ```
 
-### 기타 요구사항
+### Other Requirements
 
 - Node.js 18+
 - npm
-- sqlite3 CLI (`brew install sqlite3` — macOS 기본 포함)
+- sqlite3 CLI (included by default on macOS)
 
-## 설치 및 실행
+## Installation
 
-### 방법 1: Claude Code 플러그인으로 설치 (권장)
+### Option 1: Install as Claude Code Plugin (Recommended)
 
 ```bash
-# 플러그인 설치
+# Install plugin
 claude plugin add claude-config-editor
 
-# 실행 (Claude Code 세션에서)
+# Run (in a Claude Code session)
 /config-editor
 ```
 
-### 방법 2: 수동 설치
+### Option 2: Manual Installation
 
 ```bash
-# 저장소 클론
+# Clone repository
 git clone https://github.com/your-username/claude-config-editor.git
 cd claude-config-editor
 
-# 의존성 설치
+# Install dependencies
 npm install
 
-# 백엔드 서버 실행 (터미널 1)
+# Start backend server (Terminal 1)
 npm run server
 
-# 프론트엔드 개발 서버 실행 (터미널 2)
+# Start frontend dev server (Terminal 2)
 npm run dev
 ```
 
-프론트엔드와 백엔드를 **동시에** 실행해야 합니다.
-- 프론트엔드: `http://localhost:5173`
-- 백엔드 API: `http://localhost:3850`
+Both frontend and backend must run **simultaneously**.
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:3850`
 
-## 기술 스택
+## Tech Stack
 
 - **Frontend**: React 19 + TypeScript + Vite 8 + Tailwind CSS 4
-- **Backend**: Node.js HTTP Server (파일 시스템 접근)
-- **Editor**: CodeMirror 6 (마크다운/JS 하이라이팅)
+- **Backend**: Node.js HTTP Server (filesystem access)
+- **Editor**: CodeMirror 6 (Markdown/JS highlighting)
 - **Drag & Drop**: dnd-kit
 
-## 개발 명령어
+## Development Commands
 
-| 명령어 | 설명 |
-|--------|------|
-| `npm run dev` | Vite 개발 서버 |
-| `npm run server` | 백엔드 서버 (포트 3850) |
-| `npm run build` | 프로덕션 빌드 |
-| `npm run lint` | ESLint 검사 |
-| `npm run typecheck` | TypeScript 타입 체크 |
-| `npm run preview` | 빌드 결과 미리보기 |
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Vite dev server |
+| `npm run server` | Backend server (port 3850) |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint check |
+| `npm run typecheck` | TypeScript type check |
+| `npm run preview` | Preview production build |
 
 ## License
 

@@ -1,6 +1,6 @@
 {
   "name": "claude-config-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Visual Config Editor for Claude Code - Drag & Drop Hook Pipeline, Agent Workflow, Skill/Rule Editor",
   "author": {
     "name": "jung-wan-kim",

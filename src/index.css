@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
 * {
   box-sizing: border-box;
@@ -86,6 +86,27 @@ body::after {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* Focus indicators */
+*:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 0;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Glow border animation for active elements */
 @keyframes borderGlow {
   0%, 100% { opacity: 0.4; }
@@ -108,19 +129,6 @@ body::after {
 
 .animate-slide-in {
   animation: slideIn 0.25s ease-out forwards;
-}
-
-/* Glass card effect */
-.glass-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-  border: 1px solid var(--border-subtle);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-}
-
-.glass-card-hover:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-  border-color: var(--border-medium);
 }
 
 /* Nav item hover glow */

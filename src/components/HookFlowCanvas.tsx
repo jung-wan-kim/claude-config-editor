@@ -73,6 +73,9 @@ function PipelineCard({ card, isDragging, onClick, onRemove, onDragStart, onDrag
   return (
     <div
       draggable
+      role="button"
+      aria-label={name}
+      tabIndex={0}
       onDragStart={(e) => onDragStart(e, card)}
       onDragEnd={onDragEnd}
       onDragOver={(e) => { e.preventDefault(); onDragOver?.(e); }}
@@ -80,6 +83,12 @@ function PipelineCard({ card, isDragging, onClick, onRemove, onDragStart, onDrag
       onClick={(e) => {
         e.stopPropagation();
         onClick(card);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(card);
+        }
       }}
       className="group flex-shrink-0 px-3 py-2.5 rounded-lg cursor-grab transition-all select-none"
       style={{
@@ -108,7 +117,8 @@ function PipelineCard({ card, isDragging, onClick, onRemove, onDragStart, onDrag
         </div>
         <button
           onClick={(e) => { e.stopPropagation(); onRemove(card.id); }}
-          className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500/30"
+          aria-label={`Remove ${name}`}
+          className="w-5 h-5 -m-1 p-1 rounded-full flex items-center justify-center text-[10px] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500/30"
           style={{ color: '#f87171' }}
           title="Remove from pipeline"
         >

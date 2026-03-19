@@ -141,6 +141,7 @@ export function ScopeToggle({ scope, onScopeChange, projectPath, onProjectPathCh
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search projects"
               className="w-full px-3 py-1.5 rounded-lg text-xs outline-none font-mono"
               style={{
                 background: 'rgba(255,255,255,0.05)',
@@ -168,16 +169,10 @@ export function ScopeToggle({ scope, onScopeChange, projectPath, onProjectPathCh
                 <button
                   key={entry.cwd}
                   onClick={() => handleProjectSelect(entry)}
-                  className="w-full text-left px-4 py-3 text-xs transition-all flex items-center justify-between gap-2 group"
+                  className={`w-full text-left px-4 py-3 text-xs transition-all flex items-center justify-between gap-2 group${!isSelected ? ' hover:bg-white/[0.04]' : ''}`}
                   style={{
                     background: isSelected ? 'rgba(16,185,129,0.15)' : 'transparent',
                     borderBottom: '1px solid rgba(255,255,255,0.04)',
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isSelected) (e.currentTarget).style.background = 'rgba(255,255,255,0.04)';
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isSelected) (e.currentTarget).style.background = 'transparent';
                   }}
                 >
                   <div className="flex flex-col gap-0.5 min-w-0 flex-1">

@@ -112,7 +112,6 @@ export function HooksPage({ scope, projectPath, onScopeChange, onProjectPathChan
     ) {
       commandPath = commandPath.replace(/^\[(agent|skill|command)\]\s*/, '');
     }
-    commandPath = commandPath.replace('~', '/Users/jung-wankim');
     try {
       const result = await fetchFile(commandPath);
       setEditorContent(result.content);

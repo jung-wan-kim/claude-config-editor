@@ -127,7 +127,9 @@ const server = http.createServer(async (req, res) => {
         sendError(res, 'path is required', 400);
         return;
       }
-      const fullPath = filePath.startsWith('/') ? filePath : path.join(USER_CLAUDE_DIR, filePath);
+      const fullPath = filePath.startsWith('~')
+        ? path.join(os.homedir(), filePath.slice(1))
+        : filePath.startsWith('/') ? filePath : path.join(USER_CLAUDE_DIR, filePath);
       if (!fs.existsSync(fullPath)) {
         sendError(res, 'File not found', 404);
         return;
@@ -145,7 +147,9 @@ const server = http.createServer(async (req, res) => {
         sendError(res, 'path is required', 400);
         return;
       }
-      const fullPath = filePath.startsWith('/') ? filePath : path.join(USER_CLAUDE_DIR, filePath);
+      const fullPath = filePath.startsWith('~')
+        ? path.join(os.homedir(), filePath.slice(1))
+        : filePath.startsWith('/') ? filePath : path.join(USER_CLAUDE_DIR, filePath);
       const dir = path.dirname(fullPath);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(fullPath, content, 'utf-8');

@@ -91,21 +91,13 @@ function FileTreeNode({
     <button
       draggable
       onDragStart={handleDragStart}
-      className="w-full flex items-center gap-1.5 py-2 px-1 text-xs transition-colors rounded-lg cursor-grab"
+      className={`w-full flex items-center gap-1.5 py-2 px-1 text-xs transition-colors rounded-lg cursor-grab${!isSelected ? ' hover:bg-white/[0.04]' : ''}`}
       style={{
         paddingLeft,
         background: isSelected ? `${color}20` : isActive ? `${color}08` : 'transparent',
         color: isSelected ? color : isActive ? color : '#94a3b8',
       }}
       onClick={() => onFileSelect(node.path)}
-      onMouseEnter={(e) => {
-        if (!isSelected)
-          (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.04)';
-      }}
-      onMouseLeave={(e) => {
-        if (!isSelected)
-          (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
-      }}
     >
       <span className="w-4 text-center text-[11px] shrink-0">{icon}</span>
       <span className="truncate">{node.name}</span>

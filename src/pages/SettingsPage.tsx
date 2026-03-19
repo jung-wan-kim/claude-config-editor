@@ -37,6 +37,7 @@ function EnvEditor({ env, onChange }: EnvEditorProps) {
             type="text"
             value={value}
             onChange={(e) => handleValueChange(key, e.target.value)}
+            aria-label={`Value for ${key}`}
             className="flex-1 px-2 py-1 rounded text-xs font-mono bg-transparent outline-none"
             style={{
               background: 'rgba(255,255,255,0.05)',
@@ -46,6 +47,7 @@ function EnvEditor({ env, onChange }: EnvEditorProps) {
           />
           <button
             onClick={() => handleRemove(key)}
+            aria-label={`Remove ${key}`}
             className="text-xs text-slate-600 hover:text-red-400 transition-colors px-1"
           >
             ×
@@ -95,6 +97,7 @@ function PermissionsEditor({ permissions, onChange }: PermissionsEditorProps) {
               </span>
               <button
                 onClick={() => handleRemoveAllow(rule)}
+                aria-label={`Remove rule ${rule}`}
                 className="text-xs text-transparent group-hover:text-red-500 transition-colors"
               >
                 ×
@@ -109,6 +112,7 @@ function PermissionsEditor({ permissions, onChange }: PermissionsEditorProps) {
             onChange={(e) => setNewAllowRule(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleAddAllow()}
             placeholder="e.g. Bash(git:*)"
+            aria-label="New permission rule"
             className="flex-1 px-2 py-1 rounded text-xs font-mono outline-none"
             style={{
               background: 'rgba(255,255,255,0.05)',

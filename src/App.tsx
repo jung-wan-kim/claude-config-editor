@@ -36,6 +36,7 @@ export function App() {
   const [isTreeLoading, setIsTreeLoading] = useState(false);
   const [search, setSearch] = useState('');
   const [activeHookFiles, setActiveHookFiles] = useState<Set<string>>(new Set());
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const resolvedProjectPath = scope === 'project' && projectPath ? projectPath : undefined;
 
@@ -114,17 +115,20 @@ export function App() {
         }}
       >
         <div className="flex items-center gap-2.5">
-          <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold"
+          <button
+            onClick={() => setIsSidebarOpen((prev) => !prev)}
+            aria-label="Toggle sidebar"
+            className="w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold transition-all"
             style={{
               background: 'linear-gradient(135deg, rgba(79,143,255,0.25) 0%, rgba(167,139,250,0.2) 100%)',
               border: '1px solid rgba(79,143,255,0.3)',
               color: '#93bbff',
               boxShadow: '0 0 20px rgba(79,143,255,0.1)',
+              flexShrink: 0,
             }}
           >
             {'<>'}
-          </div>
+          </button>
           <span className="text-sm font-semibold tracking-tight" style={{ color: 'var(--text-primary)' }}>
             Claude Config Editor
           </span>
@@ -137,6 +141,7 @@ export function App() {
               placeholder="Search files..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              aria-label="Search files"
               className="pl-8 pr-3 py-1.5 rounded-lg text-xs outline-none w-48 font-mono transition-all focus:w-56"
               style={{
                 background: 'rgba(255,255,255,0.04)',
@@ -144,7 +149,7 @@ export function App() {
                 color: 'var(--text-primary)',
               }}
             />
-            <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs" style={{ color: 'var(--text-muted)' }}>
+            <span aria-hidden="true" className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs" style={{ color: 'var(--text-muted)' }}>
               /
             </span>
           </div>
@@ -160,8 +165,14 @@ export function App() {
       <div className="flex flex-1 overflow-hidden relative" style={{ zIndex: 1 }}>
         {/* Left Sidebar */}
         <aside
-          className="w-56 shrink-0 flex flex-col overflow-hidden"
-          style={{ borderRight: '1px solid var(--border-subtle)', background: 'rgba(255,255,255,0.008)' }}
+          className="shrink-0 flex flex-col overflow-hidden transition-all"
+          style={{
+            width: isSidebarOpen ? '224px' : '0',
+            borderRight: isSidebarOpen ? '1px solid var(--border-subtle)' : 'none',
+            background: 'rgba(255,255,255,0.008)',
+            overflow: isSidebarOpen ? 'hidden' : 'hidden',
+            visibility: isSidebarOpen ? 'visible' : 'hidden',
+          }}
         >
           {/* Navigation */}
           <nav className="flex flex-col gap-1 p-3 shrink-0" style={{ borderBottom: '1px solid var(--border-subtle)' }}>
@@ -183,6 +194,7 @@ export function App() {
                   }}
                 >
                   <span
+                    aria-hidden="true"
                     className="w-5 h-5 rounded-md flex items-center justify-center text-[11px]"
                     style={{
                       background: isActive ? `${item.color}20` : 'rgba(255,255,255,0.04)',

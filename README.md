@@ -7,6 +7,18 @@ Manage Hooks, Agents, Skills, Rules, and Settings through an intuitive interface
 
 ![Claude Config Editor Demo](./config-editor.gif)
 
+## Screenshots
+
+### Hooks Pipeline Editor
+Drag & drop hook cards with dual scope (User / Project). 8 hook types with color-coded cards.
+
+![Hooks Pipeline](./docs/hooks-pipeline.png)
+
+### Settings Management
+Edit environment variables, permissions, and raw JSON with visual UI.
+
+![Settings Page](./docs/settings-page.png)
+
 ## Features
 
 - **Hooks Pipeline Editor** — Drag & drop hook cards, supports 8 hook types

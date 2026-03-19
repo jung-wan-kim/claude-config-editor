@@ -7,6 +7,18 @@ Hooks, Agents, Skills, Rules, Settings를 직관적인 인터페이스로 관리
 
 ![Claude Config Editor Demo](./config-editor.gif)
 
+## 스크린샷
+
+### Hooks 파이프라인 편집기
+드래그 앤 드롭으로 Hook 카드를 배열. User / Project 이원 스코프 지원. 8가지 Hook 타입별 색상 구분.
+
+![Hooks Pipeline](./docs/hooks-pipeline.png)
+
+### Settings 관리
+환경변수, 권한(Permissions), Raw JSON을 시각적 UI로 편집.
+
+![Settings Page](./docs/settings-page.png)
+
 ## 주요 기능
 
 - **Hooks 파이프라인 편집기** — 드래그 앤 드롭으로 Hook 카드 배열, 8가지 Hook 타입 지원

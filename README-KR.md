@@ -57,12 +57,15 @@ memory-bank sync
 ### 방법 1: Claude Code 플러그인으로 설치 (권장)
 
 ```bash
-# 플러그인 설치
+# 마켓플레이스 추가 및 설치
 /plugin marketplace add https://github.com/jung-wan-kim/claude-config-editor
 /plugin install claude-config-editor
 
 # 실행 (Claude Code 세션에서)
 /config-editor
+
+# 최신 버전으로 업데이트
+claude plugin update claude-config-editor
 ```
 
 ### 방법 2: 수동 설치

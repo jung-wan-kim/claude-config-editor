@@ -57,12 +57,15 @@ memory-bank sync
 ### Option 1: Install as Claude Code Plugin (Recommended)
 
 ```bash
-# Install plugin
+# Add marketplace & install
 /plugin marketplace add https://github.com/jung-wan-kim/claude-config-editor
 /plugin install claude-config-editor
 
 # Run (in a Claude Code session)
 /config-editor
+
+# Update to latest version
+claude plugin update claude-config-editor
 ```
 
 ### Option 2: Manual Installation
